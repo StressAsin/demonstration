@@ -75,15 +75,24 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: 30,
                 ),
                 if (selectedFeels.length > 0)
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => SolutionScreen()),
-                      );
+                  GestureDetector(
+                    onTap: () {
+                      Get.to(SolutionScreen());
                     },
-                    child: Text("Submit"),
+                    child: Container(
+                      padding: EdgeInsets.all(15),
+                      decoration: BoxDecoration(
+                        color: Color(0xFF0EAB9B),
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      child: Text(
+                        "Submit",
+                        style: Theme.of(context)
+                            .textTheme
+                            .button
+                            .copyWith(color: Colors.white),
+                      ),
+                    ),
                   ),
               ],
             ),

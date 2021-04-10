@@ -24,8 +24,10 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
+        navigatorKey: Get.key,
+        navigatorObservers: [GetObserver()],
         theme: ThemeData(
-          scaffoldBackgroundColor: Color(0xFF093637),
+          scaffoldBackgroundColor: Color(0xFF0D5451),
           textTheme: GoogleFonts.montserratTextTheme(
             TextTheme(
               headline6: GoogleFonts.montserrat(color: Colors.white),

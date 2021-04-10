@@ -27,27 +27,55 @@ class LoginScreen extends StatelessWidget {
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.grey),
                     ),
-                    labelText: "Your nickname",
+                    labelText: "Username",
+                    labelStyle: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(height: 20),
+            Center(
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width * 0.85,
+                child: TextField(
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    suffixIcon: Icon(Icons.remove_red_eye),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey),
+                    ),
+                    labelText: "Password",
                     labelStyle: TextStyle(color: Colors.white),
                   ),
                 ),
               ),
             ),
             SizedBox(height: 60),
-            RaisedButton(
-                onPressed: () {
-                  // Ensure a name was provided
-                  if (_usernameController.text.replaceAll(" ", "").length < 2) {
-                    showToast("Please add a nickname");
-                    return;
-                  }
-                  Get.put(UserController()).username = _usernameController.text;
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (context) => HomeScreen()),
-                  );
-                },
-                child: Text("Continue")),
+            GestureDetector(
+              onTap: () {
+                // Ensure a name was provided
+                if (_usernameController.text.replaceAll(" ", "").length < 2) {
+                  showToast("Please add a nickname");
+                  return;
+                }
+                Get.put(UserController()).username = _usernameController.text;
+                Get.offAll(() => HomeScreen());
+              },
+              child: Container(
+                padding: EdgeInsets.all(15),
+                decoration: BoxDecoration(
+                  color: Color(0xFF0EAB9B),
+                  borderRadius: BorderRadius.circular(30),
+                ),
+                child: Text(
+                  "Submit",
+                  style: Theme.of(context)
+                      .textTheme
+                      .button
+                      .copyWith(color: Colors.white),
+                ),
+              ),
+            ),
           ],
         ),
       ),
